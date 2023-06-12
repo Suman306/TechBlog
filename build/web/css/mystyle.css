@@ -12,3 +12,9 @@
 .container-small {
   max-width: 900px; /* Adjust the value as per your desired width */
 }
+
+/*login_header_background*/
+
+.login-header-background{
+    background: #b2ebf2
+}
