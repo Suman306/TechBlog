@@ -30,6 +30,9 @@
           <a class="nav-link active text-dark" href="login_page.jsp"><span class="fa fa-user"></span> Login</a>
         </li>
        
+         <li class="nav-item ">
+          <a class="nav-link active text-dark" href="register_page.jsp"><span class="fa fa-user-plus"></span> Sign Up</a>
+        </li>
        
       </ul>
       <form class="d-flex">
