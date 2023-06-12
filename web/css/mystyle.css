@@ -1,3 +1,14 @@
-body{
-    background:maroon;
+.primary-background{
+    background: #26c6da;
+}
+
+/*.navbar-dark .navbar-nav .nav-link {
+  color: #000000;  Dark black color 
+}*/
+
+.custom-background {
+  background-color: #26c6da; /* Desired gray background color */
+}
+.container-small {
+  max-width: 900px; /* Adjust the value as per your desired width */
 }
