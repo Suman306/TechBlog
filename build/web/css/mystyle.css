@@ -18,3 +18,7 @@
 .login-header-background{
     background: #b2ebf2
 }
+.small-image {
+    max-width: 200px;
+    max-height: 200px;
+}

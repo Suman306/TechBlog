@@ -13,6 +13,7 @@ public class User {
     private String about;
     private String gender;
     private Timestamp dateTime;
+    private String profile;
 
     public User() {
     }
@@ -27,6 +28,7 @@ public class User {
         this.dateTime = dateTime;
     }
 
+   
     public User(String name, String email, String password, String about, String gender) {
         this.name = name;
         this.email = email;
@@ -93,6 +95,15 @@ public class User {
     public void setDateTime(Timestamp dateTime) {
         this.dateTime = dateTime;
     }
+    
+     public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
     
     
 }
