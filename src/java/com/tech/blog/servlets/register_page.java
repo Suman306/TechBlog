@@ -64,7 +64,7 @@ public class register_page extends HttpServlet {
                      out.println("Done");
                 }
                 else{
-                    out.println("Error occur");
+                    out.println("Email Already Exist !");
                 }
             }
             

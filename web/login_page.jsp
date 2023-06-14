@@ -1,6 +1,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.tech.blog.entities.Message" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,6 +29,20 @@
                                 <span class="fa fa-user fa-3x"></span>
                                 <h4>Login here</h4>
                             </div>
+
+                           <%
+                            Message m=(Message)session.getAttribute("msg");
+                            if(m!=null){
+                            %>
+                             <div class="alert <%= m.getCssClass()%> mt-3" role="alert">
+                               <%= m.getContent()%>
+                            </div>
+                            
+                            <%
+                                session.removeAttribute("msg");
+                               }
+                           
+                           %>
                             <div class="card-body ">
                                 <form action="LoginServlet" method="post">
                                     <div class="mb-3">
