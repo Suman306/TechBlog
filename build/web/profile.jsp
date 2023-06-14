@@ -104,40 +104,98 @@
                             <h5 class="modal-title" id="exampleModalLabel"> <%= user.getName()%></h5><br>
 
 
-                            <table class="table">
+                            <div id="prfile-details">
+                                <table class="table">
+
+
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">ID </th>
+                                            <td><%= user.getId()%></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">EMAIL </th>
+                                            <td><%= user.getEmail()%></td>
+
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">GENDER</th>
+                                            <td><%= user.getGender()%></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">ABOUT</th>
+                                            <td><%= user.getAbout()%></td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">REGISTERED ON</th>
+                                            <td><%= user.getDateTime().toString()%></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <div id="profile-edit" style="display : none">
+                                <h3>Edit Your Profile</h3>
                                 
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">ID </th>
-                                        <td><%= user.getId()%></td>
-                                      
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">EMAIL </th>
-                                        <td><%= user.getEmail()%></td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">GENDER</th>
-                                         <td><%= user.getGender()%></td>
-                                    </tr>
-                                      <tr>
-                                        <th scope="row">ABOUT</th>
-                                         <td><%= user.getAbout()%></td>
-                                    </tr>
+                                <form action="EditServlet" method="post">
                                     
-                                     <tr>
-                                        <th scope="row">REGISTERED ON</th>
-                                         <td><%= user.getDateTime().toString()%></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                    <table class="table">
+                                        
+                                        <tr>
+                                            <td>ID :</td>
+                                            <td><%= user.getId()%></td>
+                                        </tr>
+                                        
+                                         <tr>
+                                            <td>User Name :</td>
+                                            <td><input type="text" class="form-control" name="user_name" value="<%= user.getName()%>"></td>
+                                        </tr>
+                                         
+                                         <tr>
+                                            <td>Email :</td>
+                                            <td><input type="email" class="form-control" name="user_email" value="<%= user.getEmail()%>"></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>Password :</td>
+                                            <td><input type="password" class="form-control" name="user_password" value="<%= user.getPassword()%>"></td>
+                                        </tr>
+                                         <tr>
+                                            <td>Gender :</td>
+                                            <td><%= user.getGender().toUpperCase()%></td>
+                                        </tr>
+                                        <tr>
+                                            <td>About :</td>
+                                            <td>
+                                                <textarea rows="3" class="form-control" name="user_about" > <%= user.getAbout()%></textarea>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>Upload  Pic :</td>
+                                            <td>
+                                                <input  type="file" name="image" class="form-control">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                            <div class="container text-center">
+                                                <button type="submit" class="btn btn-outline-dark primary-background">SAVE</button>
+                                                
+                                            </div>
+                                </form>
+                            </div>
+
+
 
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Edit</button>
+                        <button id="edit-profile-button" type="button" class="btn btn-primary">Edit</button>
                     </div>
                 </div>
             </div>
@@ -148,6 +206,37 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
         <!--<script src="js/myjs.js" type="text/javascript"></script>-->
+
+        <script>
+            $(document).ready(function () {
+
+                let editStatus = false;
+                $('#edit-profile-button').click(function () {
+
+                    if (editStatus == false) {
+
+                        $("#prfile-details").hide();
+
+                        $("#profile-edit").show();
+
+                        editStatus = true;
+
+                        $(this).text("Back")
+                    } else {
+                        $("#prfile-details").show()
+
+                        $("#profile-edit").hide();
+                        editStatus = false;
+                        $(this).text("EDIT")
+                    }
+
+
+                });
+
+            });
+
+
+        </script>
 
     </body>
 </html>
