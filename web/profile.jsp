@@ -1,6 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.tech.blog.entities.User" %>
+<%@page import="com.tech.blog.entities.*" %>
 <%@page errorPage="error_page.jsp" %>
 <%
 
@@ -83,6 +83,20 @@
         </nav>
 
         <!--end of Navebar-->
+        
+          <%
+                            Message m=(Message)session.getAttribute("msg");
+                            if(m!=null){
+                            %>
+                             <div class="alert <%= m.getCssClass()%> mt-3" role="alert">
+                               <%= m.getContent()%>
+                            </div>
+                            
+                            <%
+                                session.removeAttribute("msg");
+                               }
+                           
+                           %>
 
         <!--modal-->
 
@@ -140,7 +154,7 @@
                             <div id="profile-edit" style="display : none">
                                 <h3>Edit Your Profile</h3>
                                 
-                                <form action="EditServlet" method="post">
+                                <form action="EditServlet" method="post" enctype="multipart/form-data">
                                     
                                     <table class="table">
                                         
