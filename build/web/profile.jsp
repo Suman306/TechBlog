@@ -2,6 +2,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.tech.blog.entities.*" %>
 <%@page errorPage="error_page.jsp" %>
+<%@page import="com.tech.blog.dao.*" %>
+<%@page  import="com.tech.blog.helper.*" %>
+<%@ page import="java.util.ArrayList" %>
+
+
+
 <%
 
   User user=(User)session.getAttribute("currentUser");
@@ -45,7 +51,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-dark  " aria-current="page" href="#"><span class="fa fa-home"></span> Home</a>
+                            <a class="nav-link active text-dark  " aria-current="page" href="index.jsp"><span class="fa fa-home"></span> Home</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -55,7 +61,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Programming Languages</a></li>
                                 <li><a class="dropdown-item" href="#">Data Structures</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li><hr class="dropdown-divider">Web Development</li>
                                 <li><a class="dropdown-item" href="#">Latest Projects</a></li>
                             </ul>
                         </li>
@@ -64,6 +70,9 @@
                             <a class="nav-link active text-dark" href="#"><span class="fa fa-address-book"></span> Contact</a>
                         </li>
 
+                        <li class="nav-item ">
+                            <a class="nav-link active text-dark" href="#" data-bs-toggle="modal" data-bs-target="#add-post-modal"><span class="	fa fa-upload"></span> Do Post</a>
+                        </li>
 
 
 
@@ -75,7 +84,7 @@
                         </li>
 
                         <li class="nav-item ">
-                            <a class="nav-link active text-dark" href="LogoutServlet"><span class="	fa fa-user-times"></span> Logout</a>
+                            <a class="nav-link active text-dark" href="LogoutServlet"><span class="fa fa-user-times"></span> Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -83,20 +92,20 @@
         </nav>
 
         <!--end of Navebar-->
-        
-          <%
-                            Message m=(Message)session.getAttribute("msg");
-                            if(m!=null){
-                            %>
-                             <div class="alert <%= m.getCssClass()%> mt-3" role="alert">
-                               <%= m.getContent()%>
-                            </div>
-                            
-                            <%
-                                session.removeAttribute("msg");
-                               }
+
+        <%
+                          Message m=(Message)session.getAttribute("msg");
+                          if(m!=null){
+        %>
+        <div class="alert <%= m.getCssClass()%> mt-3" role="alert">
+            <%= m.getContent()%>
+        </div>
+
+        <%
+            session.removeAttribute("msg");
+           }
                            
-                           %>
+        %>
 
         <!--modal-->
 
@@ -153,31 +162,31 @@
 
                             <div id="profile-edit" style="display : none">
                                 <h3>Edit Your Profile</h3>
-                                
+
                                 <form action="EditServlet" method="post" enctype="multipart/form-data">
-                                    
+
                                     <table class="table">
-                                        
+
                                         <tr>
                                             <td>ID :</td>
                                             <td><%= user.getId()%></td>
                                         </tr>
-                                        
-                                         <tr>
+
+                                        <tr>
                                             <td>User Name :</td>
                                             <td><input type="text" class="form-control" name="user_name" value="<%= user.getName()%>"></td>
                                         </tr>
-                                         
-                                         <tr>
+
+                                        <tr>
                                             <td>Email :</td>
                                             <td><input type="email" class="form-control" name="user_email" value="<%= user.getEmail()%>"></td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td>Password :</td>
                                             <td><input type="password" class="form-control" name="user_password" value="<%= user.getPassword()%>"></td>
                                         </tr>
-                                         <tr>
+                                        <tr>
                                             <td>Gender :</td>
                                             <td><%= user.getGender().toUpperCase()%></td>
                                         </tr>
@@ -187,7 +196,7 @@
                                                 <textarea rows="3" class="form-control" name="user_about" > <%= user.getAbout()%></textarea>
                                             </td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td>Upload  Pic :</td>
                                             <td>
@@ -195,11 +204,11 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    
-                                            <div class="container text-center">
-                                                <button type="submit" class="btn btn-outline-dark primary-background">SAVE</button>
-                                                
-                                            </div>
+
+                                    <div class="container text-center">
+                                        <button type="submit" class="btn btn-outline-dark primary-background">SAVE</button>
+
+                                    </div>
                                 </form>
                             </div>
 
@@ -214,6 +223,73 @@
                 </div>
             </div>
         </div>
+
+        <!--end of profile modal-->
+
+        <!--start of post modal-->
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="add-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Provide Post Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="add-post-form" action="AddPostServlet" method="post">
+
+                            <div class="form-group">
+
+                                <select class="form-control mb-2" >
+                                    <option selected Disabled>Select the category for post</option>
+                                    <%
+                                        PostDao postd=new PostDao(ConnectionProvider.getConnection());
+                                        ArrayList<Category> list= postd.getAllCategories();
+//                                       for(Category c: list){
+                                    %>
+                                    
+                                    <!--<option></option>-->
+                                    <option value="1" >Java Programming</option>
+                                    <option value="2">Python </option>
+                                    <option value="3">Web Development</option>
+                                    <% //}%>
+                                </select>
+
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <input name="pTitle" type="text" placeholder="Enter the post Title" class="form-control"/>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea name="pContent" class="form-control mt-2" style="height:"500px" placeholder="Enter your content"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="pCode" class="form-control mt-2" style="height:"500px" placeholder="Enter your code(if any)"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="mt-3">Enter Pic for post</label>
+                                <br>
+                                <input type="file" name="pic" class="mt-2"/>
+
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--end post modal-->
 
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 

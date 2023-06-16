@@ -4,17 +4,20 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/register_page.java</file>
-            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/entities/Message.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/LoginServlet.java</file>
-            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/index.jsp</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/normal_navbar.jsp</file>
-            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/dao/UserDao.java</file>
-            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/css/mystyle.css</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/LogoutServlet.java</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/entities/Category.java</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/entities/Post.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/login_page.jsp</file>
-            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/profile.jsp</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/EditServlet.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/helper/Helper.java</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/entities/Message.java</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/index.jsp</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/dao/UserDao.java</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/css/mystyle.css</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/profile.jsp</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/dao/PostDao.java</file>
         </group>
     </open-files>
 </project-private>
