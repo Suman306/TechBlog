@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/register_page.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/LoginServlet.java</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/AddPostServlet.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/normal_navbar.jsp</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/LogoutServlet.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/entities/Category.java</file>
@@ -17,6 +18,7 @@
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/dao/UserDao.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/css/mystyle.css</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/profile.jsp</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/entities/User.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/dao/PostDao.java</file>
         </group>
     </open-files>

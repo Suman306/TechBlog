@@ -243,21 +243,21 @@
 
                             <div class="form-group">
 
-                                <select class="form-control mb-2" >
+                                <select class="form-select mb-2" aria-label="Default select example" name="cid" >
                                     <option selected Disabled>Select the category for post</option>
                                     <%
                                         PostDao postd=new PostDao(ConnectionProvider.getConnection());
                                         ArrayList<Category> list= postd.getAllCategories();
-//                                       for(Category c: list){
+//                                       for (Category c: list){
                                     %>
-                                    
-                                    <!--<option></option>-->
-                                    <option value="1" >Java Programming</option>
+
+                                    <!--<option>hii</option>-->
+                                    <option value="1" >Java Programing</option>
                                     <option value="2">Python </option>
                                     <option value="3">Web Development</option>
                                     <% //}%>
                                 </select>
-
+                               
 
                             </div>
 
@@ -278,13 +278,16 @@
                                 <input type="file" name="pic" class="mt-2"/>
 
                             </div>
+
+                            <div class="container text-center">
+                                <button type="submit" class="btn btn-outline-primary mt-3 ">Post</button>
+
+
+                            </div>   
                         </form>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -298,33 +301,67 @@
         <!--<script src="js/myjs.js" type="text/javascript"></script>-->
 
         <script>
-            $(document).ready(function () {
+                                   $(document).ready(function () {
 
-                let editStatus = false;
-                $('#edit-profile-button').click(function () {
+                                       let editStatus = false;
+                                       $('#edit-profile-button').click(function () {
 
-                    if (editStatus == false) {
+                                           if (editStatus == false) {
 
-                        $("#prfile-details").hide();
+                                               $("#prfile-details").hide();
 
-                        $("#profile-edit").show();
+                                               $("#profile-edit").show();
 
-                        editStatus = true;
+                                               editStatus = true;
 
-                        $(this).text("Back")
-                    } else {
-                        $("#prfile-details").show()
+                                               $(this).text("Back")
+                                           } else {
+                                               $("#prfile-details").show()
 
-                        $("#profile-edit").hide();
-                        editStatus = false;
-                        $(this).text("EDIT")
-                    }
+                                               $("#profile-edit").hide();
+                                               editStatus = false;
+                                               $(this).text("EDIT")
+                                           }
 
 
+                                       });
+
+                                   });
+
+
+        </script>
+
+        <!--now add post js-->
+
+        <script>
+
+            $(document).ready(function (e) {
+                $("#add-post-form").on("submit", function (e) {
+                    //this code gets called when form is submitted...
+
+                    event.preventDefault();
+//                    console.log("You have submitted");
+                    let form = new FormData(this);
+
+                    //now requesting to server
+
+                    $.ajax({
+
+                        url: "AddPostServlet",
+                        type: 'POST',
+                        data: form,
+                        success: function (data, textStatus, jqXHR) {
+                            console.log(data);
+
+                        },
+                        error: function (jqHR, textStatus, errorThrown) {
+
+                        },
+                        processData: false,
+                        contentType: false
+                    });
                 });
-
             });
-
 
         </script>
 
