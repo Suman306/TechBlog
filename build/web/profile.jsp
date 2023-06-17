@@ -93,6 +93,10 @@
 
         <!--end of Navebar-->
 
+
+
+
+
         <%
                           Message m=(Message)session.getAttribute("msg");
                           if(m!=null){
@@ -107,9 +111,61 @@
                            
         %>
 
-        <!--modal-->
+        <!--main body of page-->
 
-        <!-- Button trigger modal -->
+        <main>
+
+            <div class="container">
+                <div class="row mt-4">
+                    <!--first col-->
+                    <div class="col-md-4">
+                        <!--categories-->
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                               All Posts
+                            </a>
+                             <%
+                                        PostDao d=new PostDao(ConnectionProvider.getConnection());
+                                        ArrayList<Category> l= d.getAllCategories();
+                                       for (Category c: l){
+                                    %>
+                            <a href="#" class="list-group-item list-group-item-action"><%= c.getName()%></a>
+                            <%}%>
+                        </div>
+
+                    </div>
+
+                    <!--second col-->
+
+                    <div class="col-md-8" >
+                        <!--all posts-->
+                        <div class="container text-center" id="loader">
+                            <i class="fa fa-refresh fa-3x fa-spin" ></i>
+                            <h3 class="mt-2">Loading...</h3>
+                        </div>
+                        
+                        <div class="container-fluid" id="post-container">
+                             
+                        </div>
+                        
+                </div>
+            </div>
+
+
+        </main>
+
+
+        <!--end of main body-->
+
+
+
+
+
+
+
+
+        <!--profile Modal-->
+
 
 
         <!-- Modal -->
@@ -228,8 +284,6 @@
 
         <!--start of post modal-->
 
-
-
         <!-- Modal -->
         <div class="modal fade" id="add-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -248,16 +302,14 @@
                                     <%
                                         PostDao postd=new PostDao(ConnectionProvider.getConnection());
                                         ArrayList<Category> list= postd.getAllCategories();
-//                                       for (Category c: list){
+                                       for (Category c: list){
                                     %>
 
-                                    <!--<option>hii</option>-->
-                                    <option value="1" >Java Programing</option>
-                                    <option value="2">Python </option>
-                                    <option value="3">Web Development</option>
-                                    <% //}%>
+                                    <option value="<%= c.getCid()%>"><%= c.getName()%></option>
+                                    
+                                    <%}%>
                                 </select>
-                               
+
 
                             </div>
 
@@ -297,36 +349,38 @@
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
         <!--<script src="js/myjs.js" type="text/javascript"></script>-->
 
+
+        <!--edit profile script-->
         <script>
-                                   $(document).ready(function () {
+            $(document).ready(function () {
 
-                                       let editStatus = false;
-                                       $('#edit-profile-button').click(function () {
+                let editStatus = false;
+                $('#edit-profile-button').click(function () {
 
-                                           if (editStatus == false) {
+                    if (editStatus == false) {
 
-                                               $("#prfile-details").hide();
+                        $("#prfile-details").hide();
 
-                                               $("#profile-edit").show();
+                        $("#profile-edit").show();
 
-                                               editStatus = true;
+                        editStatus = true;
 
-                                               $(this).text("Back")
-                                           } else {
-                                               $("#prfile-details").show()
+                        $(this).text("Back")
+                    } else {
+                        $("#prfile-details").show()
 
-                                               $("#profile-edit").hide();
-                                               editStatus = false;
-                                               $(this).text("EDIT")
-                                           }
+                        $("#profile-edit").hide();
+                        editStatus = false;
+                        $(this).text("EDIT")
+                    }
 
 
-                                       });
+                });
 
-                                   });
+            });
 
 
         </script>
@@ -352,7 +406,12 @@
                         data: form,
                         success: function (data, textStatus, jqXHR) {
                             console.log(data);
+                            if (data.trim() == 'done') {
+                                swal("Good job!", "Post Uploaded Successfully!", "success");
 
+                            } else {
+                                swal("Error!", "Something Went Wrong!", "error");
+                            }
                         },
                         error: function (jqHR, textStatus, errorThrown) {
 
@@ -365,5 +424,28 @@
 
         </script>
 
+        <!--loading posts-->
+        
+        <script >
+         
+         function getPosts(){
+              $.ajax({
+                url : "load_posts.jsp",
+                method:'GET',
+                success:function(data,textStatus,jqXHR){
+                    console.log(data);
+                    $("#loader").hide();
+                    $("#post-container").html(data);
+                }
+            })
+         }
+         
+        $(document).ready(function(e){
+           getPosts();
+        })
+            
+        </script>
+        
+        
     </body>
 </html>
