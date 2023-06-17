@@ -29,8 +29,13 @@
 
             .banner-background{
                 clip-path: polygon(50% 0%, 81% 0, 100% 0, 100% 90%, 80% 97%, 58% 91%, 29% 100%, 0 88%, 0 0, 20% 0);
-
             }
+            body{
+                    background: url(img/nightSky.jpg);
+                    background-size: cover;
+                    background-attachment: fixed;
+                }
+
 
         </style>
         <!--font-awesome icons-->
@@ -118,10 +123,10 @@
             <div class="container">
                 <div class="row mt-4">
                     <!--first col-->
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-2">
                         <!--categories-->
                         <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                            <a href="#" onclick="getPosts(0,this)"  class=" c-link list-group-item list-group-item-action active " aria-current="true">
                                All Posts
                             </a>
                              <%
@@ -129,7 +134,7 @@
                                         ArrayList<Category> l= d.getAllCategories();
                                        for (Category c: l){
                                     %>
-                            <a href="#" class="list-group-item list-group-item-action"><%= c.getName()%></a>
+                                    <a href="#" onclick="getPosts(<%= c.getCid()%>,this)" class="c-link list-group-item list-group-item-action "><%= c.getName()%></a>
                             <%}%>
                         </div>
 
@@ -428,20 +433,29 @@
         
         <script >
          
-         function getPosts(){
+         function getPosts( catId,temp){
+             
+             $("#loader").show();
+             $("#post-container").hide();
+             
+             $(".c-link").removeClass('active')
               $.ajax({
                 url : "load_posts.jsp",
+                data: {cId:catId},
                 method:'GET',
                 success:function(data,textStatus,jqXHR){
                     console.log(data);
                     $("#loader").hide();
+                     $("#post-container").show();
                     $("#post-container").html(data);
+                    $(temp).addClass('active')
                 }
             })
          }
          
         $(document).ready(function(e){
-           getPosts();
+            let allPostRef=$('.c-link')[0]
+           getPosts(0,allPostRef);
         })
             
         </script>
