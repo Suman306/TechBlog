@@ -74,9 +74,10 @@
             }
 
         </style>
-
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v17.0" nonce="TpT41CzW"></script>
+
+
 </head>
 <body>
 
@@ -188,19 +189,14 @@
                         <div class="card-footer">
 
                             <div class="fb-comments" data-href="http://localhost:8080/TechBlog/show_blog_page.jsp?post_id=<%= p.getpId()%>" data-width="" data-numposts="5">
-                            
+
                             </div>
                         </div>
                     </div>
 
-
-
                 </div>
 
-
-
             </div>
-
 
         </div>
 
@@ -208,9 +204,6 @@
 
 
     <!--end of main content of body-->
-
-
-
 
 
     <%
@@ -492,7 +485,6 @@
         });
 
     </script>
-
 
 
 </body>
