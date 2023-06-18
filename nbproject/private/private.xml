@@ -7,18 +7,22 @@
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/LoginServlet.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/AddPostServlet.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/normal_navbar.jsp</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/show_blog_page.jsp</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/LogoutServlet.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/entities/Category.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/entities/Post.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/login_page.jsp</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/EditServlet.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/helper/Helper.java</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/servlets/LikeServlet.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/entities/Message.java</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/dao/LikeDao.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/index.jsp</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/load_posts.jsp</file>
+            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/js/myjs.js</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/dao/UserDao.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/css/mystyle.css</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/web/profile.jsp</file>
-            <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/entities/User.java</file>
             <file>file:/C:/Users/Patel%20SumanKumar/Desktop/JAVA%20EV/TechBlog/src/java/com/tech/blog/dao/PostDao.java</file>
         </group>
     </open-files>

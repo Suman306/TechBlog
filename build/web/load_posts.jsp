@@ -7,8 +7,11 @@
 <%@ page import="java.util.*" %>
 <%@ page import= "java.io.PrintWriter" %>
 
+
 <div class="row">
     <%
+        User uuu=(User)session.getAttribute("currentUser");
+        
       Thread.sleep(1000);
     PostDao d=  new PostDao(ConnectionProvider.getConnection());
     int cid=Integer.parseInt(request.getParameter("cId"));
@@ -39,7 +42,12 @@
             </div>
             <div class="card-footer text-center footer-bg">
 
-                <a href="#!" class="btn btn-outline-light btn-sm"><i class="fa fa-thumbs-o-up "></i><span > 10</span></a>
+                <%
+                        LikeDao ldao=new LikeDao(ConnectionProvider.getConnection());
+                                                     
+                %>
+
+                <a href="#!"  onclick="doLike(<%= p.getpId()%>,<%= uuu.getId()%>)" class="btn btn-outline-light btn-sm"><i class="fa fa-thumbs-o-up "></i><span class="like-counter"> <%= ldao.countLikeOnPost(p.getpId()) %></span></a>
 
                 <a href="show_blog_page.jsp?post_id=<%= p.getpId()%>" class="btn btn-outline-light btn-sm">Read more...</a>
                 <a href="#!" class="btn btn-outline-light btn-sm"><i class="fa fa-commenting-o"></i><span> 20</span></a>
@@ -53,3 +61,6 @@
     %>
 
 </div>
+    
+     <script src="js/myjs.js" type="text/javascript"></script>
+
